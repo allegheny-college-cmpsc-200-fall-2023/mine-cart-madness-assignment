@@ -1,0 +1,208 @@
+- teleporter/main.c:
+  - description: teleporter/main.c dereferences the x value in the teleport function
+    category: Basic C
+    check: MatchFileFragment
+    options:
+      fragment: "*x"
+      count: 1
+      exact: false
+- teleporter/main.c:
+  - description: teleporter/main.c dereferences the y value in the teleport function
+    category: Basic C
+    check: MatchFileFragment
+    options:
+      fragment: "*x"
+      count: 1
+      exact: false
+- teleporter/main.c:
+  - description: teleporter/main.c dereferences the x parameter in the teleport function
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'int\*|int(\s)\*x'
+      count: 1
+      exact: false
+- teleporter/main.c:
+  - description: teleporter/main.c dereferences the y parameter in the teleport function
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(int\*|int(\s))\*x'
+      count: 1
+      exact: false
+- teleporter/main.c:
+  - description: teleporter/main.c passses values to teleport from main using the 'reference to' operator
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'teleport\(\&a,(\s)?\&b\);'
+      count: 1
+      exact: true
+- teleporter/main.c:
+  - description: teleporter/main.c does not return values from the teleport function (no return statements)
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'return(\s)[x\*y\[\]int\s]'
+      count: 0
+      exact: true
+- teleporter/main.c:
+  - description: teleporter/main.c classifies the teleport statement as a void return type, taking 2 parameters
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'void\steleport(\s)?\(.*,.*\)'
+      count: 1
+      exact: true
+- teleporter/main.c:
+  - description: teleporter/main.c contains no TODOs
+    category: TODO
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c crates passphrase using char array called code
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'char\*\scode|char\s\*code(\s)?='
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c creates passphrase using char array called code
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'char\*\scode|char\s\*code(\s)?='
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function accepts a dereferenced char pointer parameter
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '\((\s)?(char\* [a-z0-9_]+|char\s\*[a-z0-9_]+)\)'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function is typed as a char pointer
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(char\*|char\s\*)\shide'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function uses the strlen function to calculate char array size
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'strlen(\s)?\([a-z0-9_]+\)'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function uses malloc to allocate space for passcode string in heap
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'malloc(\s)?\(sizeof\(char\)(\s)?\*(\s)?[a-z0-9_]+\)'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function stores outcome of malloc as a char pointer
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(char\*\s|char\s\*)[a-z0-9_]+(\s)?=(\s)?malloc'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function uses strcpy to move passcode local memory to malloc'd memory
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'strcpy\([a-z0-9_]+,(\s)?[a-z0-9_]+\)'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c hide function returns malloc'd pointer value
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'return\s[a-z_]+'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c main function frees the malloc'd heap memory for the char pointer
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'free(\s)?\([a-z_]+\);'
+      count: 1
+      exact: true
+- cart-training/main.c:
+  - description: cart-training/main.c add_carts function typed as a pointer to a node struct, taking no parameters
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(struct\snode\*\s|struct\snode\s\*)add_carts(\s)?\(void\)(\s)?\{'
+      count: 1
+      exact: true
+- cart-training/main.c:
+  - description: cart-training/main.c creates a struct called 'node' with int id and struct node *next
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'struct\snode(\s)?\{(\s)+int\sid;(\s)+struct\snode(\*\s|\s\*)next;(\s)+\}'
+      count: 1
+      exact: true
+- cart-training/main.c:
+  - description: cart-training/main.c add_carts function malloc'd at least 3 linked list node structs
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'malloc(\s)?\(sizeof\((\s)?struct\s[a-z0-9_]+\)\)'
+      count: 3
+      exact: false
+- cart-training/main.c:
+  - description: cart-training/main.c add_carts function creates three NULL placeholders for linked list nodes
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(struct\snode\*\s|struct\snode\s\*)[a-z0-9_]+(\s)?=(\s)?NULL;'
+      count: 3
+      exact: false
+- cart-training/main.c:
+  - description: cart-training/main.c add_carts function uses -> operator to populate pointer fields
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: '(\s)?->(\s)?'
+      count: 3
+      exact: false
+- cart-training/main.c:
+  - description: cart-training/main.c main function uses a while loop to count the number of cars by finding NULL value
+    category: Basic C
+    check: MatchFileRegex
+    options:
+      regex: 'while(\s)?\([a-z0-9_+](\s)?(->)?(\s)?[a-z0-9_]+(\s)[!=]+(\s)+NULL\)'
+      count: 1
+      exact: true
+- passcode/main.c:
+  - description: passcode/main.c contains no TODOs
+    category: TODO
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- cart-training/main.c:
+  - description: cart-training/main.c contains no TODOs
+    category: TODO
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
