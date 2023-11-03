@@ -34,6 +34,85 @@ Complete this work in [cart-training/main.c](cart-training/main.c).
 
 Once you show up to work, as the saying goes, it's work time. To operated moon rock mining carts, you'll need to make short `trains` of them. Here, we'll look at a structure called a `linked list` which gives us the power to couple mining cars to sent into the moon rock mine.
 
+### Lab: `cart-corral`
+
+Complete this work in [cart-corral/main.c](cart-corral/main.c).
+
+> We've got to move some microwave radars; special moon rock delivery. We've got to move these lunar samples; we've got to move these specimen ids.
+>
+> Lunar Straits
+
+There are multiple parts to this lab. Please read carefully.
+
+#### Part 1
+
+As the saying goes, where there's opportunity, there's a train of lunar moon rock carts to carry it away. In fact, there _are_ carts which should be implemented as `struct`s with the fields:
+
+|Field |Type | Purpose |
+|:-----|:----|:--------|
+|`id`|`int`| Stores the id number `0` - `n` of the cart |
+|`type`|`char[11]` | Stores the text type of the rock in the cart |
+|`weight`|`float`| Stores the weight of the cart in tons |
+|`next`| `struct pointer` | Stores the reference to the next cart |
+
+For safety's sake, let's call this `struct cart`.
+
+This task requires you to build a linked-list train for some `n` cars long, each carrying some amount of tonnage of sorted rock. That is: you can trust that each car has only _one_ type of rock associated with it. However, if you look at the main body of our `cart-corral`, there doesn't seem to be any data!
+
+Never fear -- it's _definitely_ there. However, you won't see the variables defined in the program. They exist, though in the form of:
+
+|Pre-existing variable to use| Purpose |
+|:---------------------------|:--------|
+|`types`                     | Array of the various types of rocks |
+|`weights`                   | The weights of the various car loads|
+
+> Hint: this will _more likely than not_ involve a loop and an [if statement](https://diveintosystems.org/book/C1-C_intro/conditionals.html).
+
+There will also be a few instances of `char *` pointers.
+
+#### Part 2
+
+Two functions exist for tracking memory usage in this program. They are:
+
+- getTotalHeap
+- getFreeHeap
+
+`printf` the amount of memory remaining after each new car is added to the train.
+
+#### Part 3
+
+The functions you used in `Part 2` are back! At the end of your program, `free` the memory you've taken up with your train. The number you end up with will matter in the [report](docs/report.md).
+
+
+#### tl;dr
+
+There are two variables: `types` and `weights` which _already exist_ and can be used _like globals_. (They're not really globals, but they work like them.)
+
+### Assignment "Hacks"
+
+See the `Suggestions` below to challenge yourself to implement a Hack. As always, you are allowed to develop
+your own Hack to satisfy this stretch goal. Place the code for the Hack inline with the code in the corresponding
+file.
+
+In order to recieve credit for the Hack, you must fill out the [hack.md](docs/hack.md) file located in the
+`docs` folder.
+
+#### Long Train Runnin'...backwards
+
+We added `pointer`s to the next car. Can you add pointers to the _previous car_ as well? How does this change the memory used by the program?
+
+#### Most Common Type
+
+Can you figure a way to report the most common type of specimen in all of the carts? It may be harder than it seems and _could_ involve a `struct` specifically made for this purpose.
+
+#### Memento Memori
+
+Right now, it's likely that your program returns a bunch of the _same_ number over and over when recording memory changes during pointer creation. How can you ensure that each memory amount only _prints once_ (i.e. don't print `222` a bunch of times; only print when the value _changes_.)
+
+#### Make it your own
+
+You are free to develop your own "Hack" for this assignment. However, you'll need to be sure to justify the value of your hack clearly!
+
 ### Changes to files in `.vscode`
 
 Based on your system setup (refer to your `hello-blinky` assignment), you will need switch out the `.vscode` folder in each exercise with the _last working copy_.
