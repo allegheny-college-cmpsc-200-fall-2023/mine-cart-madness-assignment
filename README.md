@@ -107,7 +107,15 @@ Can you figure a way to report the most common type of specimen in all of the ca
 
 #### Memento Memori
 
-Right now, it's likely that your program returns a bunch of the _same_ number over and over when recording memory changes during pointer creation. How can you ensure that each memory amount only _prints once_ (i.e. don't print `222` a bunch of times; only print when the value _changes_.)
+This is one for the adventurous. 
+
+We know that the device _can_ run out of memory. But to what extremes can we push it to _force it to_? For example, how many train cars would it take to occupy all of the free heap? How would you design an experiment to find out?
+
+You'll probably need some [additional information about how `malloc` handles such a case] (https://diveintosystems.org/book/C2-C_depth/dynamic_memory.html). In your [docs/hack.md](docs/hack.md), document your experimental process.
+
+##### Note
+
+If you do this, it may seem like the device is unresponsive _and_ it may enter a `PANIC` loop. However, if you unplug the device and plug it back in, the Raspberry Pi Pico should reboot and become programmable again.
 
 #### Make it your own
 
