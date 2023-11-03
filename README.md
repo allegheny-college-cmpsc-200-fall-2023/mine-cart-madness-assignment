@@ -75,7 +75,7 @@ There will also be a few instances of `char *` pointers.
 Two functions exist for tracking memory usage in this program. They are:
 
 - `getTotalHeap()`
-- `getFreeHeap`
+- `getFreeHeap()`
 
 Neither takes any arguments. Use them as listed above.
 
