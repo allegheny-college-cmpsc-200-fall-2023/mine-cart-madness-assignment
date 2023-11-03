@@ -74,8 +74,10 @@ There will also be a few instances of `char *` pointers.
 
 Two functions exist for tracking memory usage in this program. They are:
 
-- getTotalHeap
-- getFreeHeap
+- `getTotalHeap()`
+- `getFreeHeap`
+
+Neither takes any arguments. Use them as listed above.
 
 `printf` the amount of memory remaining after each new car is added to the train.
 
